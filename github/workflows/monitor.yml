@@ -18,5 +18,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Run monitor
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run ticket monitor
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python monitor.py
